@@ -12,7 +12,7 @@ public class Users {
     // Get all users
     public static void getUsers() {
         when()
-                .get(Environment.localhost + Endpoint.users)
+                .get(Environment.host + Endpoint.users)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
     }
@@ -21,7 +21,7 @@ public class Users {
     public static void getUserById(String userId) {
         given()
                 .pathParam("_id", userId)
-                .get(Environment.localhost + Endpoint.usersId)
+                .get(Environment.host + Endpoint.usersId)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
     }

@@ -6,6 +6,7 @@ public class Endpoint {
     public static final String usersId = "/users/{_id}";
     public static final String posts = "/posts";
     public static final String postsId = "/posts/{_id}";
+    public static final String put = "/posts/{_id}";
 
 
 }

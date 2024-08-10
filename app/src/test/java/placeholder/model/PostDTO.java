@@ -6,25 +6,31 @@ public class PostDTO {
 
     private String title;
     private String body;
-    private String userId;
+    private Integer userId;
+    private Integer id;
 
     Faker faker = new Faker();
-
-    public PostDTO(String title, String body, String userId) {
-        this.title = title;
-        this.body = body;
-        this.userId = userId;
-    }
 
     public PostDTO() {
         this.title = faker.book().title();
         this.body = faker.book().genre();
-        this.userId = String.valueOf(faker.number().numberBetween(1,10));
+        this.userId = faker.random().nextInt(1, 100);
+        this.id = faker.random().nextInt(1, 100);
     }
 
     public String getTitle() { return title; }
 
     public String getBody() { return body; }
 
-    public String getUserId() { return userId; }
+    public Integer getUserId() { return userId; }
+
+    public Integer getId() { return id; }
+
+    public void setTitle(String title) { this.title = title; }
+
+    public void setBody(String body) { this.body = body; }
+
+    public void setUserId(Integer userId) { this.userId = userId; }
+
+    public void setId(Integer id) { this.id = id; }
 }
