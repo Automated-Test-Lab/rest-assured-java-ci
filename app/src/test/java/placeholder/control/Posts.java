@@ -9,14 +9,13 @@ import placeholder.util.Environment;
 
 import static io.restassured.RestAssured.given;
 import static io.restassured.RestAssured.when;
-import static org.hamcrest.CoreMatchers.is;
 
 public class Posts {
 
     // Get all posts
     public static void getPosts() {
         when()
-                .get(Environment.host + Endpoint.posts)
+                .get(Environment.baseUrl + Endpoint.posts)
                 .then()
                 .statusCode(HttpStatus.SC_OK);
     }
@@ -25,7 +24,7 @@ public class Posts {
     public static void getPostByUserId(String userId) {
         Response response = given()
                 .pathParam("_id", userId)
-                .get(Environment.host + Endpoint.postsId);
+                .get(Environment.baseUrl + Endpoint.postsId);
 
         // Verify the status code
         response.then()
@@ -48,7 +47,7 @@ public class Posts {
                 .body(body)
                 .contentType(ContentType.JSON)
                 .when()
-                .post(Environment.host + Endpoint.posts)
+                .post(Environment.baseUrl + Endpoint.posts)
                 .then()
                 .statusCode(statusCode)
                 .extract().response();
@@ -72,7 +71,7 @@ public class Posts {
                 .pathParam("_id", userId)
                 .contentType(ContentType.JSON)
                 .when()
-                .put(Environment.host + Endpoint.put)
+                .put(Environment.baseUrl + Endpoint.put)
                 .then()
                 .statusCode(statusCode)
                 .extract().response();
@@ -85,7 +84,7 @@ public class Posts {
     public static void deletePost(String postID) {
         Response response = given()
                 .pathParam("_id", postID)
-                .delete(Environment.host + Endpoint.postsId);
+                .delete(Environment.baseUrl + Endpoint.postsId);
 
         // Verify the status code
         response.then()
